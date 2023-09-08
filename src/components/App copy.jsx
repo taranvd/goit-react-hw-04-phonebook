@@ -10,22 +10,22 @@ export class App extends Component {
   //   filter: '',
   // };
 
-  componentDidMount = () => {
-    const contact = localStorage.getItem('contact');
-    const parsedContact = JSON.parse(contact);
+  // componentDidMount = () => {
+  //   const contact = localStorage.getItem('contact');
+  //   const parsedContact = JSON.parse(contact);
 
-    if (parsedContact) {
-      this.setState({
-        contacts: parsedContact,
-      });
-    }
-  };
+  //   if (parsedContact) {
+  //     this.setState({
+  //       contacts: parsedContact,
+  //     });
+  //   }
+  // };
 
-  componentDidUpdate = (prevProps, prevState) => {
-    if (prevState.contacts !== this.state.contacts) {
-      localStorage.setItem('contact', JSON.stringify(this.state.contacts));
-    }
-  };
+  // componentDidUpdate = (prevProps, prevState) => {
+  //   if (prevState.contacts !== this.state.contacts) {
+  //     localStorage.setItem('contact', JSON.stringify(this.state.contacts));
+  //   }
+  // };
 
   // changeFilter = newFilter => {
   //   this.setState({

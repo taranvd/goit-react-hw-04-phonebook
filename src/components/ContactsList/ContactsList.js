@@ -1,5 +1,10 @@
-import { ButtonStyled, List, ListItem } from './ContactsList.style';
-export const ContactsList = ({ contacts, deleteContact }) => {
+import {
+  ButtonClearAll,
+  ButtonStyled,
+  List,
+  ListItem,
+} from './ContactsList.style';
+export const ContactsList = ({ contacts, deleteContact, onClearAll }) => {
   return (
     <List>
       {contacts.map(contact => (
@@ -11,6 +16,9 @@ export const ContactsList = ({ contacts, deleteContact }) => {
           </ButtonStyled>
         </ListItem>
       ))}
+      {contacts.length >= 3 && (
+        <ButtonClearAll onClick={onClearAll}>Clear all</ButtonClearAll>
+      )}
     </List>
   );
 };

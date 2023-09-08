@@ -1,18 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Section } from './Section/Section';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactsList } from './ContactsList/ContactsList';
 import { ContactFilter } from './ContactFilter/ContactFilter';
+import { useLocalStorage } from 'hooks/useLocalStorage';
 
 export const App = () => {
-  const [contacts, setContacts] = useState(
-    () => JSON.parse(localStorage.getItem('contact')) ?? []
-  );
+  const [contacts, setContacts] = useLocalStorage('contact', []);
   const [filter, setFilter] = useState('');
-
-  useEffect(() => {
-    window.localStorage.setItem('contact', JSON.stringify(contacts));
-  }, [contacts]);
 
   const addContact = newContact => {
     const existingContact = contacts.find(
@@ -35,8 +30,8 @@ export const App = () => {
     setFilter(newFilter);
   };
 
-  const resetFilters = () => {
-    setFilter('');
+  const resetContactList = () => {
+    setContacts([]);
   };
 
   const visibleContacts = contacts.filter(contact =>
@@ -50,15 +45,12 @@ export const App = () => {
       </Section>
       {contacts.length > 0 && (
         <Section title="Contact">
-          <ContactFilter
-            filter={filter}
-            changeFilter={changeFilter}
-            onClearFilters={resetFilters}
-          />
+          <ContactFilter filter={filter} changeFilter={changeFilter} />
 
           <ContactsList
             contacts={visibleContacts}
             deleteContact={deleteContact}
+            onClearAll={resetContactList}
           />
         </Section>
       )}

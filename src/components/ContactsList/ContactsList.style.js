@@ -33,3 +33,16 @@ export const ButtonStyled = styled.button`
     background-color: #d84630;
   }
 `;
+
+export const ButtonClearAll = styled.button`
+  background-color: #ff6347;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #d84630;
+  }
+`;
